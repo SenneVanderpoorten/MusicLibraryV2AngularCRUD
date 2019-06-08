@@ -25,6 +25,8 @@
       <mat-cell *matCellDef="let row">
         <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
         <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+        <button mat-icon-button color="succes" (click)="onPlay(row)"><mat-icon>play_circle_outline</mat-icon></button>
+
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="loading">
@@ -44,4 +46,6 @@
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>
+
+<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [displayTitle]="msbapDisplayTitle"></mat-basic-audio-player>
 

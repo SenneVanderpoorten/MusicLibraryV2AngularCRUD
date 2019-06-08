@@ -8,8 +8,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 
-//import { NgxAudioPlayerModule } from 'ngx-audio-player';
-//import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+
+
 
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 
@@ -38,10 +39,10 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
     
-    //NgxAudioPlayerModule,
-    //AngularFontAwesomeModule 
+    NgxAudioPlayerModule,
+    
   ],
   providers: [TrackService],
   bootstrap: [AppComponent],

@@ -55,6 +55,7 @@ export class TrackService {
         
       });
   }
+  
 
   deleteTrack($key: string) {
     this.trackList.remove($key);

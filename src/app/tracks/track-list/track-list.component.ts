@@ -7,12 +7,17 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { NotificationService } from '../../shared/notification.service';
 import { DialogService } from '../../shared/dialog.service';
 
+import { Track } from 'ngx-audio-player';  
+
 @Component({
   selector: 'app-track-list',
   templateUrl: './track-list.component.html',
   styleUrls: ['./track-list.component.css']
 })
 export class TrackListComponent implements OnInit {
+  msbapTitle = 'Audio Title';
+  msbapAudioUrl = 'Link to audio URL';   
+  msbapDisplayTitle = false;   
 
   constructor(private service: TrackService,
     
@@ -22,8 +27,8 @@ export class TrackListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['artistName', 'trackName', 'actions'];
-  @ViewChild(MatSort,{ read: true, static: false }) sort: MatSort;
-  @ViewChild(MatPaginator,{ read: true, static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true} ) paginator: MatPaginator;
   searchKey: string;
 
   ngOnInit() {
@@ -46,6 +51,8 @@ export class TrackListComponent implements OnInit {
           });
         };
       });
+     
+      
   }
 
   onSearchClear() {
@@ -74,6 +81,13 @@ export class TrackListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(TrackComponent,dialogConfig);
+  }
+  onPlay(row){
+    //TODO
+    this.service.populateForm(row);
+    this.msbapTitle = this.service.form.get('trackName').value;
+    this.msbapAudioUrl = this.service.form.get('fileUrl').value;
+
   }
 
   onDelete($key){
