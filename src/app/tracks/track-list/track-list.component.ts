@@ -22,8 +22,8 @@ export class TrackListComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['artistName', 'trackName', 'actions'];
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort,{ read: true, static: false }) sort: MatSort;
+  @ViewChild(MatPaginator,{ read: true, static: false }) paginator: MatPaginator;
   searchKey: string;
 
   ngOnInit() {
