@@ -7,7 +7,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { NotificationService } from '../../shared/notification.service';
 import { DialogService } from '../../shared/dialog.service';
 
-import { Track } from 'ngx-audio-player';  
+
 
 @Component({
   selector: 'app-track-list',
@@ -16,7 +16,7 @@ import { Track } from 'ngx-audio-player';
 })
 export class TrackListComponent implements OnInit {
   msbapTitle = 'Audio Title';
-  msbapAudioUrl = 'Link to audio URL';   
+  msbapAudioUrl = 'URL';   
   msbapDisplayTitle = false;   
 
   constructor(private service: TrackService,
@@ -83,7 +83,7 @@ export class TrackListComponent implements OnInit {
     this.dialog.open(TrackComponent,dialogConfig);
   }
   onPlay(row){
-    //TODO
+   
     this.service.populateForm(row);
     this.msbapTitle = this.service.form.get('trackName').value;
     this.msbapAudioUrl = this.service.form.get('fileUrl').value;
